@@ -1,8 +1,8 @@
-# Apellido-Post1-U10 — Benchmark de Jerarquía de Caché
+# Balaguera-Post1-U10 — Benchmark de Jerarquía de Caché
 
 **Asignatura:** Arquitectura de Computadores — Unidad 10: Memorias del Computador  
 **Actividad:** Post-Contenido 1  
-**Universidad:** Francisco de Paula Santander (UFPS) — Ingeniería de Sistemas — 2026
+
 
 ---
 
