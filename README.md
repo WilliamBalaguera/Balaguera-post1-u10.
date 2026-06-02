@@ -1,4 +1,4 @@
-# 🧠 Memory Access Benchmark — Cache Hierarchy Profiler
+# Memory Access Benchmark — Cache Hierarchy Profiler
 
 > Herramienta en C para medir y comparar la latencia de acceso **secuencial vs. aleatorio** a memoria, revelando los límites de L1, L2, L3 y RAM del sistema.
 
@@ -9,7 +9,7 @@
 | Campo           | Detalle                               |
 |-----------------|---------------------------------------|
 | **Autor**       | William Balaguera                     |
-| **Materia**     | Programación Web                      |
+| **Materia**     | Arquitectura de computadores          |
 | **Unidad**      | 10                                    |
 | **Año**         | 2026                                  |
 | **Universidad** | Francisco de Paula Santander          |
