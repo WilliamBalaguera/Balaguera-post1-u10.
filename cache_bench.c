@@ -3,18 +3,10 @@
 #include <time.h>
 #include <string.h>
 
-/* REPEAT reducido a 10 para que el benchmark termine en segundos.
-   Con REPEAT=100 y arrays de 64 MB el tiempo total supera los 10 minutos. */
+
 #define REPEAT 10
 
-/* ---------------------------------------------------------------
-   bench_seq: mide la latencia media de acceso SECUENCIAL a un
-   array de n_bytes bytes. El recorrido lineal explota la localidad
-   espacial y el prefetcher del hardware, por lo que arrays que
-   caben en L1/L2/L3 muestran latencias mucho menores que los que
-   desbordan a RAM.
-   Retorna: nanosegundos por byte accedido.
---------------------------------------------------------------- */
+
 double bench_seq(size_t n_bytes) {
     volatile char *arr = (volatile char *)malloc(n_bytes);
     if (!arr) return -1.0;
@@ -33,14 +25,7 @@ double bench_seq(size_t n_bytes) {
     return ns / (REPEAT * (double)n_bytes);  /* ns/byte */
 }
 
-/* ---------------------------------------------------------------
-   bench_rand: mide la latencia media de acceso ALEATORIO usando
-   un indice pre-mezclado con Fisher-Yates. Destruye la localidad
-   espacial: cada acceso es casi seguro un cache miss cuando el
-   array supera el ultimo nivel de cache. Para arrays > ~1-2 MB
-   ademas se producen TLB misses que suman penalizacion adicional.
-   Retorna: nanosegundos por elemento accedido.
---------------------------------------------------------------- */
+
 double bench_rand(size_t n_bytes) {
     size_t n = n_bytes / sizeof(int);
     int    *arr = (int    *)malloc(n * sizeof(int));
@@ -69,10 +54,7 @@ double bench_rand(size_t n_bytes) {
     return ns / (REPEAT * (double)n);  /* ns/elemento */
 }
 
-/* ---------------------------------------------------------------
-   main: ejecuta ambos benchmarks sobre 12 tamanos que cubren las
-   regiones L1 -> L2 -> L3 -> RAM del sistema.
---------------------------------------------------------------- */
+
 int main(void) {
     size_t sizes[] = {
         4*1024,         /*  4 KB  — region L1 */
